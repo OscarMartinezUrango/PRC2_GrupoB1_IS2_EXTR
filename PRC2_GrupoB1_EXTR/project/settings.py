@@ -136,3 +136,10 @@ CSRF_TRUSTED_ORIGINS = ['https://omu-is2.azurewebsites.net','https://omu-is2.azu
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = 'Lax'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'grupob1is2extr@gmail.com'
+EMAIL_HOST_PASSWORD = 'jewf ygcf egzg lqtv'

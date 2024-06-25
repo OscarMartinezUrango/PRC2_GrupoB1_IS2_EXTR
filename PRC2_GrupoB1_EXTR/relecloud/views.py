@@ -3,6 +3,10 @@ from django.urls import reverse_lazy
 from . import models
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.html import strip_tags
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 
 # Create your views here.
 def index(request):
@@ -46,9 +50,19 @@ class CruiseDetailView(generic.DetailView):
     model = models.Cruise
     context_object_name = 'cruise'
 
+ # CAMBIOS PARA MANDAR EL EMAIL CON EL INFO REQUEST
 class InfoRequestCreate(SuccessMessageMixin, generic.CreateView):
     template_name = 'info_request_create.html'
     model = models.InfoRequest
     fields = ['name', 'email', 'cruise', 'notes']
     success_url = reverse_lazy('index')
-    success_message = 'Thank you, %(name)s! We will email you when we have more information about %(cruise)s!'
+    success_message = 'Email confirmation successful'
+
+    def form_valid(self, form):
+        subject = 'Confirmation of InfoRequest'
+        message = render_to_string('email.html', {'name': form.cleaned_data['name'], 'cruise': form.cleaned_data['cruise']})
+        plain_message = strip_tags(message)
+        from_email = 'grupob1is2extr@gmail.com'
+        to_email = form.cleaned_data['email']
+        send_mail(subject, plain_message, from_email, [to_email], html_message=message)
+        return super().form_valid(form)

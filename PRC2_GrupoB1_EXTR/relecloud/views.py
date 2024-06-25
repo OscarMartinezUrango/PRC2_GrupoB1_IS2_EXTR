@@ -30,6 +30,10 @@ class CrearOpinion(SuccessMessageMixin, generic.CreateView):
         form.instance.user = self.request.user 
         return super().form_valid(form)
 
+class ActualizarOpinion(generic.UpdateView):
+    model = models.Opinion
+    template_name = 'opinion_formulario.html'
+    fields = ['name','description']
 
 
 class DestinationDetailView(generic.DetailView):

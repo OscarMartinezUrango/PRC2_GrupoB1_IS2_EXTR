@@ -19,6 +19,23 @@ def Opiniones(request):
     all_reviews = models.Opinion.objects.all()
     return render(request, 'Opiniones.html', {'opiniones': all_reviews})
 
+class CrearOpinion(SuccessMessageMixin, generic.CreateView):
+    model = models.Opinion
+    template_name = 'opinion_formulario.html'
+    fields = ['name', 'description']
+    success_url = reverse_lazy('opiniones') 
+    success_message = 'La opinión "%(name)s" ha sido creada con éxito.'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user 
+        return super().form_valid(form)
+
+class ActualizarOpinion(generic.UpdateView):
+    model = models.Opinion
+    template_name = 'opinion_formulario.html'
+    fields = ['name','description']
+
+
 class DestinationDetailView(generic.DetailView):
     template_name = 'destination_detail.html'
     model = models.Destination

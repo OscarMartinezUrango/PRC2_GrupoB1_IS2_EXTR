@@ -15,6 +15,10 @@ def destinations(request):
     all_destinations = models.Destination.objects.all()
     return render(request, 'destinations.html', { 'destinations': all_destinations})
 
+def Opiniones(request):
+    all_reviews = models.Opinion.objects.all()
+    return render(request, 'Opiniones.html', {'opiniones': all_reviews})
+
 class DestinationDetailView(generic.DetailView):
     template_name = 'destination_detail.html'
     model = models.Destination

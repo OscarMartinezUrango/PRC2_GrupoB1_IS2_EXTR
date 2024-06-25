@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
-    
+    # url de las conexiones para las opiniones
     path('opiniones', views.Opiniones, name='opiniones'),
     path('opiniones/add', views.CrearOpinion.as_view(), name='opinion_formulario'),
     path('opiniones/<int:pk>/update', views.ActualizarOpinion.as_view(), name='opinion_formulario'),

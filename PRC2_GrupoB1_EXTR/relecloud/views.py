@@ -19,6 +19,7 @@ def destinations(request):
     all_destinations = models.Destination.objects.all()
     return render(request, 'destinations.html', { 'destinations': all_destinations})
 
+# Nos formalizamos todo lo necesario para las opniniones que nos sugieren en el enunciado de la practica
 def Opiniones(request):
     all_reviews = models.Opinion.objects.all()
     return render(request, 'Opiniones.html', {'opiniones': all_reviews})

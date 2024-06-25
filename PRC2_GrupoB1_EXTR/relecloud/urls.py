@@ -7,6 +7,8 @@ urlpatterns = [
     path('about', views.about, name='about'),
     
     path('opiniones', views.Opiniones, name='opiniones'),
+    path('opiniones/add', views.CrearOpinion.as_view(), name='opinion_formulario'),
+    path('opiniones/<int:pk>/update', views.ActualizarOpinion.as_view(), name='opinion_formulario'),
     
     path('destinations/', views.destinations, name='destinations'),
     path('destination/<int:pk>', views.DestinationDetailView.as_view(), name='destination_detail'),

@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 ReleCloud - {{ destination }}
+{% endblock %}
+
+{% block image %}
+    {% if destination.name == 'Mars' %}
+        <img class="mr-3 img-fluid" src="{% static 'res/img/Mars.jpg' %}" alt="Marte" />
+    {% elif destination.name == 'Ceres' %}
+        <img class="mr-3 img-fluid" src="{% static 'res/img/Ceres.jpeg' %}" alt="Ceres" />
+    {% elif destination.name == 'Hygea' %}
+        <img class="mr-3 img-fluid" src="{% static 'res/img/Hygea.jpeg' %}" alt="Hygea" />
+    {% elif destination.name == 'Sea of Tranquility' %}
+        <img class="mr-3 img-fluid" src="{% static 'res/img/Sea of Tranquility.png' %}" alt="Mar tranquilidad" />
+    {% else %}
+        <img class="mr-3 img-fluid" src="{% static 'res/img/astronaut.jpeg' %}" alt="Astronaut looking into space" />
+    {% endif %}
 {% endblock %}
 
 {% block content %}

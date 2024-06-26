@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="mb-4">Opiniones</h1>
+  <div class="row">
+    {% for opinion in opiniones %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ opinion.name }}</h5>
+            <p class="card-text">{{ opinion.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No hay reseñas disponibles.</p>
+    {% endfor %}
+  </div>
+
+  
+  <a href="{% url 'opinion_formulario' %}" class="btn btn-primary">Crear Nueva Opinión</a>
+
+
+{% endblock %}
+

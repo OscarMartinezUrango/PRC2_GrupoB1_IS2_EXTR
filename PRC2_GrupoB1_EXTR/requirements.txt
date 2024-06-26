@@ -1,0 +1,6 @@
+django
+django-crispy-forms
+whitenoise
+psycopg2-binary
+crispy-bootstrap4
+Pillow
